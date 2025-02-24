@@ -8,7 +8,7 @@ from collections import deque
 
 from ._confusion_matrix import ConfusionMatrix, MultiLabelConfusionMatrix
 
-DTYPE = np.float
+DTYPE = np.float64
 ctypedef np.float_t DTYPE_t
 
 

@@ -43,20 +43,20 @@ def check_weights(weight, expand_length=1):
         an np.array. If weight is not a single value, raises an error
 
     """
-    if isinstance(weight, (int, float, np.integer, np.float)):
+    if isinstance(weight, (int, float, np.integer, np.float64)):
         if expand_length >= 1:
-            return np.array([weight] * expand_length, dtype=np.float)
+            return np.array([weight] * expand_length, dtype=np.float64)
     elif isinstance(weight, list):
-        if all(isinstance(x, (int, float, np.integer, np.float)) for x in weight):
+        if all(isinstance(x, (int, float, np.integer, np.floating)) for x in weight):
             if expand_length == 1:
                 return weight
     if isinstance(weight, np.ndarray):
-        if weight.size > 1 and all(isinstance(x, (int, float, np.integer, np.float)) for x in weight):
+        if weight.size > 1 and all(isinstance(x, (int, float, np.integer, np.floating)) for x in weight):
             if expand_length == 1:
                 return weight
-        elif weight.size == 1 and isinstance(weight[0], (int, float, np.integer, np.float)):
+        elif weight.size == 1 and isinstance(weight[0], (int, float, np.integer, np.floating)):
             if expand_length == 1:
                 return weight
             elif expand_length > 1:
-                return np.array([weight] * expand_length, dtype=np.float)
+                return np.array([weight] * expand_length, dtype=np.floating)
     raise ValueError('Invalid weight(s): {}'.format(weight))

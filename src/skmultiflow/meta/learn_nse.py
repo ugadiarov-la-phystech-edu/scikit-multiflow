@@ -295,7 +295,7 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
 
     def _fill_missing_probs(self, probs, obs_classes, all_classes):
         proba_ordered = np.zeros(
-            (probs.shape[0], all_classes.size), dtype=np.float
+            (probs.shape[0], all_classes.size), dtype=np.float64
         )
         sorted_classes = np.argsort(all_classes)
         # Find positions to insert existing classes' probs to the complete set

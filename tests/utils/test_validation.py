@@ -28,15 +28,15 @@ def test_check_weights():
     weights = check_weights(float(test_value))
     assert weights == float(test_value)
 
-    weights = check_weights(np.float(test_value))
-    assert weights == np.float(test_value)
+    weights = check_weights(np.float64(test_value))
+    assert weights == np.float64(test_value)
 
     weights = check_weights(np.int(test_value))
     assert weights == np.int(test_value)
 
-    weights = check_weights(np.array([test_value], np.float))
+    weights = check_weights(np.array([test_value], np.float64))
     assert isinstance(weights, np.ndarray)
-    assert isinstance(weights[0], np.float)
+    assert isinstance(weights[0], np.floating)
 
     weights = check_weights(np.array(np.arange(test_value)))
     assert isinstance(weights, np.ndarray)
